@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Bella - Eksklusive Frisørtjenester</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        html { scroll-behavior: smooth; }
+
+        .blob {
+            position: absolute;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: blob 6s infinite;
+        }
+
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .gradient-pink {
+            background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 50%, #F9A8D4 100%);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(236, 72, 153, 0.15);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(236, 72, 153, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .star { color: #EC4899; }
+
+        .btn-primary {
+            background-color: #EC4899;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #EC4899;
+        }
+
+        .btn-primary:hover {
+            background-color: #DB2777;
+            border-color: #DB2777;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #EC4899;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #EC4899;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FDF2F8;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- Navigasjonsbar -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-pink-500">Studio Bella</h1>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-gray-700 hover:text-pink-500 transition font-500">Tjenester</a>
+                    <a href="#gallery" class="text-gray-700 hover:text-pink-500 transition font-500">Galleri</a>
+                    <a href="#about" class="text-gray-700 hover:text-pink-500 transition font-500">Om oss</a>
+                    <a href="#reviews" class="text-gray-700 hover:text-pink-500 transition font-500">Anmeldelser</a>
+                </div>
+
+                <a href="#booking" class="btn-primary">Book time</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero-seksjon -->
+    <section class="pt-32 pb-20 gradient-pink relative overflow-hidden">
+        <div class="absolute top-10 right-10 w-64 h-64 blob bg-pink-200/40" style="animation-delay: 0s;"></div>
+        <div class="absolute bottom-0 left-20 w-80 h-80 blob bg-violet-200/30" style="animation-delay: 2s;"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center py-12">
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+                    Din beste versjon starter her
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-2xl mx-auto font-light">
+                    Eksklusive frisørtjenester som forvandles ditt håret og styrker selvtilliten din. Velkommen til Studio Bella.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#booking" class="btn-primary text-lg">Book time nå</a>
+                    <a href="#services" class="btn-secondary text-lg">Se våre tjenester</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tjenester -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Våre tjenester</h2>
+                <p class="text-lg text-gray-600">Skreddersydde løsninger for ditt hår og stil</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tjeneste 1 -->
+                <div class="hover-lift p-8 bg-gradient-to-br from-pink-50 to-pink-100/50 rounded-2xl text-center border border-pink-200/50">
+                    <div class="text-5xl mb-4">✂️</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Klipp & Styling</h3>
+                    <p class="text-gray-600 mb-4">Profesjonelt kuttet og styling som passer din ansiktsform og stil.</p>
+                    <p class="text-2xl font-bold text-pink-500">Fra 400 kr</p>
+                </div>
+
+                <!-- Tjeneste 2 -->
+                <div class="hover-lift p-8 bg-gradient-to-br from-violet-50 to-violet-100/50 rounded-2xl text-center border border-violet-200/50">
+                    <div class="text-5xl mb-4">🎨</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Farge & Highlights</h3>
+                    <p class="text-gray-600 mb-4">Vakre farger med organiske produkter som bevarer hårhelsa.</p>
+                    <p class="text-2xl font-bold text-pink-500">Fra 600 kr</p>
+                </div>
+
+                <!-- Tjeneste 3 -->
+                <div class="hover-lift p-8 bg-gradient-to-br from-pink-50 to-pink-100/50 rounded-2xl text-center border border-pink-200/50">
+                    <div class="text-5xl mb-4">💆</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Hårbehandling</h3>
+                    <p class="text-gray-600 mb-4">Dyp reparasjon og pleie for sterkt og glinsende hår.</p>
+                    <p class="text-2xl font-bold text-pink-500">Fra 300 kr</p>
+                </div>
+
+                <!-- Tjeneste 4 -->
+                <div class="hover-lift p-8 bg-gradient-to-br from-violet-50 to-violet-100/50 rounded-2xl text-center border border-violet-200/50">
+                    <div class="text-5xl mb-4">👰</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Bryllup & Event</h3>
+                    <p class="text-gray-600 mb-4">Utsøkt oppsett og styling for ditt spesielle moment.</p>
+                    <p class="text-2xl font-bold text-pink-500">Fra 1200 kr</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galleri -->
+    <section id="gallery" class="py-20 bg-gradient-to-br from-pink-50/50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Vårt arbeid</h2>
+                <p class="text-lg text-gray-600">Se transformasjoner og inspirasjon fra våre styler</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="../Images/kort-frisyre.png" alt="Stilig kort frisyre">
+                    <div class="gallery-overlay">
+                        <span class="text-white font-bold">Kort styling</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="../Images/bolgande-lokkar.png" alt="Langt hår med bølger">
+                    <div class="gallery-overlay">
+                        <span class="text-white font-bold">Bølgende lokker</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="../Images/modern-cut.png" alt="Modern frisyre">
+                    <div class="gallery-overlay">
+                        <span class="text-white font-bold">Modern cut</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="../Images/highlights.png" alt="Fargelegging">
+                    <div class="gallery-overlay">
+                        <span class="text-white font-bold">Highlights</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="../Images/brudeoppsett.png" alt="Bryllupsoppsett">
+                    <div class="gallery-overlay">
+                        <span class="text-white font-bold">Brudeuppsett</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="../Images/farging.png" alt="Farget hår">
+                    <div class="gallery-overlay">
+                        <span class="text-white font-bold">Farging</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Om oss -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="../Images/om-oss.png" alt="Studio Bella" class="rounded-2xl shadow-xl">
+                </div>
+
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Om Studio Bella</h2>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        Studio Bella ble grunnlagt i 2009 med en enkel visjon: å gi hver kunde en transformativ opplevelse. Med over 15 års erfaring innen frisørkunst, har vi skapt et rom hvor skjønnhet møter omsorg.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <span class="text-2xl text-pink-500 mr-4">✓</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Kun naturlige produkter</h4>
+                                <p class="text-gray-600">Vi bruker bærekraftige og organiske produkter for å bevare hårhelsa di.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <span class="text-2xl text-pink-500 mr-4">✓</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Ekspertise og innovasjon</h4>
+                                <p class="text-gray-600">Vår team oppdateres kontinuerlig med de nyeste trendene og teknikkene.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <span class="text-2xl text-pink-500 mr-4">✓</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Personlig oppmerksomhet</h4>
+                                <p class="text-gray-600">Hver time er skreddersydd til dine behov og drømmer.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#booking" class="btn-primary inline-block">Book konsultasjon</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anmeldelser -->
+    <section id="reviews" class="py-20 bg-gradient-to-br from-pink-50/50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Det sier kundene våre</h2>
+                <p class="text-lg text-gray-600">Hør fra folk som har opplevd Studio Bella</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Anmeldelse 1 -->
+                <div class="hover-lift p-8 bg-white rounded-xl shadow-sm border border-pink-100">
+                    <div class="flex gap-1 mb-4">
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                    </div>
+                    <p class="text-gray-700 mb-4 italic leading-relaxed">
+                        "Studio Bella endret håret mitt helt! Jeg følte meg som en helt ny person. Servicen var eksklusiv og personlig, akkurat det jeg trengte."
+                    </p>
+                    <div class="font-bold text-gray-900">— Maria H.</div>
+                </div>
+
+                <!-- Anmeldelse 2 -->
+                <div class="hover-lift p-8 bg-white rounded-xl shadow-sm border border-pink-100">
+                    <div class="flex gap-1 mb-4">
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                    </div>
+                    <p class="text-gray-700 mb-4 italic leading-relaxed">
+                        "Jeg har testet mange frisører, men Studio Bella er den beste! Profesjonelt, vennlig og mitt hår har aldri sett bedre ut."
+                    </p>
+                    <div class="font-bold text-gray-900">— Sarah K.</div>
+                </div>
+
+                <!-- Anmeldelse 3 -->
+                <div class="hover-lift p-8 bg-white rounded-xl shadow-sm border border-pink-100">
+                    <div class="flex gap-1 mb-4">
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                        <span class="star text-xl">★</span>
+                    </div>
+                    <p class="text-gray-700 mb-4 italic leading-relaxed">
+                        "Mitt bryllupsoppsett var absolutt magisk! Jeg hadde ikke kunnet ønsket det bedre. Tusen takk for en fantastisk dag!"
+                    </p>
+                    <div class="font-bold text-gray-900">— Emma R.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking / CTA -->
+    <section id="booking" class="py-24 bg-gradient-to-br from-pink-500 to-pink-600 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 blob bg-pink-400/20" style="animation-delay: 1s;"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                Klar for din transformasjon?
+            </h2>
+            <p class="text-xl md:text-2xl text-pink-100 mb-12 font-light">
+                Bestill din time i dag og få en personlig konsultasjon gratis
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                <button onclick="alert('Booking-systemet er integrert. Klikk: (555) 123-4567 for å ringe eller skriv til oss.')" class="bg-white text-pink-500 px-8 py-4 rounded-lg font-bold text-lg hover:bg-pink-50 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    📞 Ring oss nå
+                </button>
+                <button onclick="alert('Chat eller booking-skjema kan integreres her med din preferred booking-løsning.')" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition transform hover:-translate-y-1">
+                    📧 Send oss en melding
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white mt-12">
+                <div>
+                    <p class="text-4xl font-bold mb-2">📍</p>
+                    <p class="font-bold">Oslo sentrum</p>
+                    <p class="text-pink-100">Ferner Jacobsens gate 12, 0159 Oslo</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold mb-2">📞</p>
+                    <p class="font-bold">(555) 123-4567</p>
+                    <p class="text-pink-100">Man-Fre: 10:00-18:00<br>Lør: 11:00-16:00</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold mb-2">📱</p>
+                    <p class="font-bold">@studiobellahair</p>
+                    <p class="text-pink-100">Følg oss på Instagram</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold text-pink-400 mb-4">Studio Bella</h3>
+                    <p class="text-gray-400">Eksklusive frisørtjenester for din beste versjon.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Tjenester</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#services" class="hover:text-pink-400 transition">Klipp & Styling</a></li>
+                        <li><a href="#services" class="hover:text-pink-400 transition">Farge & Highlights</a></li>
+                        <li><a href="#services" class="hover:text-pink-400 transition">Behandlinger</a></li>
+                        <li><a href="#services" class="hover:text-pink-400 transition">Brudeservice</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Kontakt</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="hover:text-pink-400"><a href="tel:+55512345">(555) 123-4567</a></li>
+                        <li>Oslo sentrum</li>
+                        <li>Man-Fre: 10:00-18:00</li>
+                        <li>Lør: 11:00-16:00</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Sosiale medier</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition">Facebook</a>
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition">TikTok</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-800 mb-8">
+
+            <div class="text-center text-gray-400">
+                <p>&copy; 2026 Studio Bella. Alle rettigheter reservert.</p>
+                <p class="text-sm mt-2">Laget med ❤️ for skjønnhet og selvtillit</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
