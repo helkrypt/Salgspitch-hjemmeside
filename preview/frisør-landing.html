@@ -120,6 +120,344 @@
             background-color: #FDF2F8;
             transform: translateY(-2px);
         }
+
+        .booking-widget {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .step-dot.active {
+            background-color: #EC4899;
+            border-color: #EC4899;
+        }
+
+        .step-dot.done {
+            background-color: white;
+            border-color: white;
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .booking-step {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .booking-step.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .calendar-day.today {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .calendar-day.selected {
+            background-color: #EC4899;
+            border-color: #EC4899;
+            color: white;
+        }
+
+        .calendar-day:not(.disabled):hover:not(.selected) {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .calendar-day.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.2);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .service-card.selected {
+            background-color: white;
+            color: #EC4899;
+            border-color: white;
+        }
+
+        .service-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .service-duration {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.25rem;
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: #EC4899;
+        }
+
+        .service-card.selected .service-price {
+            color: #EC4899;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-slot {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: white;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .time-slot:hover:not(.disabled) {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .time-slot.selected {
+            background-color: white;
+            color: #EC4899;
+            border-color: white;
+        }
+
+        .time-slot.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
+        }
+
+        .confirmation-box {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            color: #EC4899;
+        }
+
+        .checkmark-circle {
+            width: 80px;
+            height: 80px;
+            background: #EC4899;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 3rem;
+            color: white;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .confirmation-heading {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #EC4899;
+            margin-bottom: 1rem;
+        }
+
+        .confirmation-summary {
+            text-align: left;
+            background: #FDF2F8;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: #EC4899;
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .confirm-button {
+            background-color: white;
+            color: #EC4899;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .confirm-button:hover {
+            background-color: #FDF2F8;
+            transform: translateY(-2px);
+        }
+
+        .confirm-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .home-link {
+            color: #EC4899;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .home-link:hover {
+            color: #DB2777;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -388,6 +726,9 @@
                 </button>
             </div>
 
+            <!-- Booking Widget -->
+            <div id="booking-widget" class="booking-widget"></div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white mt-12">
                 <div>
                     <p class="text-4xl font-bold mb-2">📍</p>
@@ -452,6 +793,281 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Booking Widget State
+        const booking = {
+            step: 1,
+            date: null,
+            service: null,
+            time: null,
+            formData: { name: '', email: '', phone: '' },
+            currentMonth: new Date(),
+            services: [
+                { id: 1, name: 'Klipp & Styling', duration: '45 min', price: '599 kr' },
+                { id: 2, name: 'Farge & Highlights', duration: '120 min', price: '1 299 kr' },
+                { id: 3, name: 'Hårbehandling', duration: '60 min', price: '799 kr' },
+                { id: 4, name: 'Bryllup & Event', duration: '180 min', price: '2 499 kr' }
+            ],
+            timeSlots: ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00']
+        };
+
+        // Initialize widget
+        function initBookingWidget() {
+            renderStep(1);
+        }
+
+        // Render steps
+        function renderStep(step) {
+            const widget = document.getElementById('booking-widget');
+            booking.step = step;
+
+            if (step === 1) {
+                renderDatePicker(widget);
+            } else if (step === 2) {
+                renderServiceSelector(widget);
+            } else if (step === 3) {
+                renderTimeAndForm(widget);
+            } else if (step === 4) {
+                renderConfirmation(widget);
+            }
+        }
+
+        // Step 1: Date Picker
+        function renderDatePicker(container) {
+            const today = new Date();
+            const monthName = new Date(booking.currentMonth).toLocaleDateString('no-NO', { month: 'long', year: 'numeric' });
+
+            let html = '<div class="step-indicator">';
+            html += '<div class="step-dot active"></div>';
+            html += '<div class="step-dot"></div>';
+            html += '<div class="step-dot"></div>';
+            html += '<div class="step-dot"></div>';
+            html += '</div>';
+
+            html += '<h3 style="color: white; font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; text-align: center;">Velg dato</h3>';
+
+            html += '<div class="nav-buttons">';
+            html += '<button class="nav-button" onclick="previousMonth()">←</button>';
+            html += '<span style="color: white; font-weight: 600;">' + monthName + '</span>';
+            html += '<button class="nav-button" onclick="nextMonth()">→</button>';
+            html += '</div>';
+
+            html += '<div class="calendar-header">';
+            ['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Sun'].forEach(day => {
+                html += '<div>' + day + '</div>';
+            });
+            html += '</div>';
+
+            html += '<div class="calendar">';
+            const firstDay = new Date(booking.currentMonth.getFullYear(), booking.currentMonth.getMonth(), 1);
+            const lastDay = new Date(booking.currentMonth.getFullYear(), booking.currentMonth.getMonth() + 1, 0);
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay() + 1);
+
+            for (let i = 0; i < 42; i++) {
+                const date = new Date(startDate);
+                date.setDate(date.getDate() + i);
+
+                const isCurrentMonth = date.getMonth() === booking.currentMonth.getMonth();
+                const isPast = date < today && date.toDateString() !== today.toDateString();
+                const isSunday = date.getDay() === 0;
+                const isSelected = booking.date && booking.date.toDateString() === date.toDateString();
+                const isToday = date.toDateString() === today.toDateString();
+
+                let classes = 'calendar-day';
+                if (isToday) classes += ' today';
+                if (isSelected) classes += ' selected';
+                if (isPast || isSunday || !isCurrentMonth) classes += ' disabled';
+
+                const onClick = (isPast || isSunday || !isCurrentMonth) ? '' : `selectDate(new Date('${date.toISOString()}'))`;
+                const day = isCurrentMonth ? date.getDate() : '';
+
+                html += `<div class="${classes}" ${onClick ? `onclick="${onClick}"` : ''}>${day}</div>`;
+            }
+            html += '</div>';
+
+            html += '<button class="confirm-button" onclick="goToStep(2)" style="margin-top: 1.5rem;">Neste: Velg tjeneste →</button>';
+
+            container.innerHTML = html;
+        }
+
+        function selectDate(date) {
+            booking.date = date;
+            renderDatePicker(document.getElementById('booking-widget'));
+        }
+
+        function previousMonth() {
+            booking.currentMonth.setMonth(booking.currentMonth.getMonth() - 1);
+            renderDatePicker(document.getElementById('booking-widget'));
+        }
+
+        function nextMonth() {
+            booking.currentMonth.setMonth(booking.currentMonth.getMonth() + 1);
+            renderDatePicker(document.getElementById('booking-widget'));
+        }
+
+        // Step 2: Service Selector
+        function renderServiceSelector(container) {
+            let html = '<div class="step-indicator">';
+            html += '<div class="step-dot done">✓</div>';
+            html += '<div class="step-dot active"></div>';
+            html += '<div class="step-dot"></div>';
+            html += '<div class="step-dot"></div>';
+            html += '</div>';
+
+            html += '<a class="back-link" onclick="goToStep(1)">← Tilbake</a>';
+            html += '<h3 style="color: white; font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; text-align: center;">Velg tjeneste</h3>';
+
+            html += '<div class="services-grid">';
+            booking.services.forEach(service => {
+                const isSelected = booking.service && booking.service.id === service.id;
+                const classes = 'service-card' + (isSelected ? ' selected' : '');
+                html += `<div class="${classes}" onclick="selectService(${service.id})">
+                    <div class="service-name">${service.name}</div>
+                    <div class="service-duration">${service.duration}</div>
+                    <div class="service-price">${service.price}</div>
+                </div>`;
+            });
+            html += '</div>';
+
+            html += '<button class="confirm-button" onclick="goToStep(3)" style="margin-top: 1.5rem;">Neste: Velg tid →</button>';
+
+            container.innerHTML = html;
+        }
+
+        function selectService(id) {
+            booking.service = booking.services.find(s => s.id === id);
+            renderServiceSelector(document.getElementById('booking-widget'));
+        }
+
+        // Step 3: Time Slots & Form
+        function renderTimeAndForm(container) {
+            let html = '<div class="step-indicator">';
+            html += '<div class="step-dot done">✓</div>';
+            html += '<div class="step-dot done">✓</div>';
+            html += '<div class="step-dot active"></div>';
+            html += '<div class="step-dot"></div>';
+            html += '</div>';
+
+            html += '<a class="back-link" onclick="goToStep(2)">← Tilbake</a>';
+            html += '<h3 style="color: white; font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; text-align: center;">Velg tid</h3>';
+
+            html += '<div class="time-slots">';
+            booking.timeSlots.forEach(time => {
+                // Disable 16:00-18:00 on Saturdays
+                const isSaturday = booking.date && booking.date.getDay() === 6;
+                const hour = parseInt(time.split(':')[0]);
+                const isDisabled = isSaturday && (hour >= 16 || hour < 10);
+                const isSelected = booking.time === time;
+
+                const classes = 'time-slot' + (isSelected ? ' selected' : '') + (isDisabled ? ' disabled' : '');
+                const onClick = isDisabled ? '' : `selectTime('${time}')`;
+
+                html += `<div class="${classes}" ${onClick ? `onclick="${onClick}"` : ''}>${time}</div>`;
+            });
+            html += '</div>';
+
+            html += '<h3 style="color: white; font-size: 1.25rem; font-weight: bold; margin: 1.5rem 0 1rem; text-align: center;">Dine opplysninger</h3>';
+
+            html += '<form onsubmit="submitBooking(event)">';
+            html += '<div class="form-group">';
+            html += '<label class="form-label">Navn *</label>';
+            html += `<input type="text" class="form-input" placeholder="Ditt navn" required value="${booking.formData.name}" onchange="booking.formData.name = this.value">`;
+            html += '</div>';
+
+            html += '<div class="form-group">';
+            html += '<label class="form-label">E-post *</label>';
+            html += `<input type="email" class="form-input" placeholder="din@epost.no" required value="${booking.formData.email}" onchange="booking.formData.email = this.value">`;
+            html += '</div>';
+
+            html += '<div class="form-group">';
+            html += '<label class="form-label">Telefon *</label>';
+            html += `<input type="tel" class="form-input" placeholder="(555) 123-4567" required value="${booking.formData.phone}" onchange="booking.formData.phone = this.value">`;
+            html += '</div>';
+
+            html += '<div class="form-group">';
+            html += '<label class="form-label">Kommentar (valgfritt)</label>';
+            html += `<input type="text" class="form-input" placeholder="Spesielle ønsker?" value="${booking.formData.comment || ''}" onchange="booking.formData.comment = this.value">`;
+            html += '</div>';
+
+            html += '<button type="submit" class="confirm-button" style="margin-top: 1.5rem;">Bekreft booking ✓</button>';
+            html += '</form>';
+
+            container.innerHTML = html;
+        }
+
+        function selectTime(time) {
+            booking.time = time;
+            renderTimeAndForm(document.getElementById('booking-widget'));
+        }
+
+        // Step 4: Confirmation
+        function renderConfirmation(container) {
+            let html = '<div class="step-indicator">';
+            html += '<div class="step-dot done">✓</div>';
+            html += '<div class="step-dot done">✓</div>';
+            html += '<div class="step-dot done">✓</div>';
+            html += '<div class="step-dot active">✓</div>';
+            html += '</div>';
+
+            const dateStr = booking.date.toLocaleDateString('no-NO', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            html += '<div class="confirmation-box">';
+            html += '<div class="checkmark-circle">✓</div>';
+            html += '<div class="confirmation-heading">Din time er booket!</div>';
+            html += '<div class="confirmation-summary">';
+            html += '<div><strong>Tjeneste:</strong> ' + booking.service.name + '</div>';
+            html += '<div><strong>Dato:</strong> ' + dateStr + '</div>';
+            html += '<div><strong>Tid:</strong> ' + booking.time + '</div>';
+            html += '<div><strong>Kunde:</strong> ' + booking.formData.name + '</div>';
+            html += '</div>';
+            html += '<a href="#" class="home-link" onclick="scrollToTop(event)">← Tilbake til forsiden</a>';
+            html += '</div>';
+
+            container.innerHTML = html;
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+
+            if (!booking.date || !booking.service || !booking.time) {
+                alert('Vennligst fyll ut alle feltene');
+                return;
+            }
+
+            goToStep(4);
+        }
+
+        function goToStep(step) {
+            if (step === 1) {
+                booking.date = null;
+                booking.service = null;
+                booking.time = null;
+            } else if (step === 2) {
+                if (!booking.date) {
+                    alert('Vennligst velg en dato');
+                    return;
+                }
+            } else if (step === 3) {
+                if (!booking.service) {
+                    alert('Vennligst velg en tjeneste');
+                    return;
+                }
+            }
+
+            renderStep(step);
+        }
+
+        function scrollToTop(event) {
+            event.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            goToStep(1);
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initBookingWidget);
+    </script>
 
 </body>
 </html>
